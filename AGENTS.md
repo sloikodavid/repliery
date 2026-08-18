@@ -8,10 +8,6 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 
 <!-- END:nextjs-agent-rules -->
 
-## Writing style
-
-Do not hard-wrap prose in source files, comments, JSX text, strings, or Markdown. Keep each paragraph on one source line unless a newline is semantically required.
-
 <!-- BEGIN:convex-agent-rules -->
 
 # This project uses Convex as its backend.
@@ -20,3 +16,9 @@ When working on Convex code, **always read
 `convex/_generated/ai/guidelines.md` first** for important guidelines on how to correctly use Convex APIs and patterns. The file contains rules that override what you may have learned about Convex from training data.
 
 <!-- END:convex-agent-rules -->
+
+Do not hard-wrap prose in source files, comments, JSX text, strings, or Markdown. Keep each paragraph on one source line unless a newline actually makes more sense, or is semantically required.
+
+Always think about how any given layout and all of the used components look on all layouts, ranging from mobile to TV.
+
+Never disguise or restructure correct code merely to evade a linter; keep the canonical form and use the narrowest documented suppression for a verified false positive.
