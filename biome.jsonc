@@ -1,0 +1,57 @@
+{
+	"$schema": "https://biomejs.dev/schemas/2.5.9/schema.json",
+	"vcs": {
+		"enabled": true,
+		"clientKind": "git",
+		"useIgnoreFile": true
+	},
+	"files": {
+		"ignoreUnknown": true,
+		"includes": [
+			"**",
+			"!node_modules",
+			"!.next",
+			"!dist",
+			"!build",
+			"!convex/_generated"
+		]
+	},
+	"formatter": {
+		"enabled": true,
+		"indentStyle": "tab"
+	},
+	"css": {
+		"parser": {
+			"tailwindDirectives": true
+		}
+	},
+	"linter": {
+		"enabled": true,
+		"rules": {
+			"preset": "recommended",
+			"correctness": {
+				"noUndeclaredDependencies": "error",
+				"noUnresolvedImports": "error"
+			},
+			"nursery": {
+				// Revisit when Biome's React Compiler lint rule becomes stable:
+				// https://github.com/biomejs/biome/issues/10974
+				"noFloatingPromises": "error",
+				"noMisusedPromises": "error",
+				"useReactCompiler": "error"
+			}
+		},
+		"domains": {
+			"next": "all",
+			"project": "recommended",
+			"react": "recommended"
+		}
+	},
+	"assist": {
+		"actions": {
+			"source": {
+				"organizeImports": "on"
+			}
+		}
+	}
+}
