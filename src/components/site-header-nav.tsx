@@ -13,8 +13,6 @@ export function SiteHeaderNav() {
 				className={buttonVariants({
 					variant: "ghost",
 					size: "sm",
-					className:
-						"text-foreground/62 transition-[background-color,color] duration-100 ease hover:bg-foreground/3 hover:text-foreground/73 focus-visible:bg-foreground/3 focus-visible:text-foreground/73 motion-reduce:transition-none",
 				})}
 			>
 				Dashboard

@@ -22,3 +22,5 @@ Do not hard-wrap prose in source files, comments, JSX text, strings, or Markdown
 Always think about how any given layout and all of the used components look on all layouts, ranging from mobile to TV.
 
 Never disguise or restructure correct code merely to evade a linter (i.e. by aliasing). Keep the canonical form and use the narrowest documented suppression for a verified false positive.
+
+Never hand-roll anything locally in a given file or component, right where it's used. Use the shadcn cli for adding new components.
