@@ -5,6 +5,7 @@ export const siteConfig = {
 	url: siteUrl,
 	routes: {
 		home: "/",
+		dashboard: "/dashboard",
 		signIn: "/sign-in",
 		waitlist: "/waitlist",
 	},
