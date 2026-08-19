@@ -1,4 +1,4 @@
-import { DM_Mono, DM_Sans } from "next/font/google";
+import { DM_Sans, Figtree } from "next/font/google";
 
 export const dmSans = DM_Sans({
 	subsets: ["latin"],
@@ -6,9 +6,9 @@ export const dmSans = DM_Sans({
 	variable: "--font-dm-sans",
 });
 
-export const dmMono = DM_Mono({
-	weight: ["300", "400", "500"],
+export const figtree = Figtree({
 	subsets: ["latin"],
 	display: "swap",
-	variable: "--font-dm-mono",
+	variable: "--font-figtree",
+	weight: "variable",
 });

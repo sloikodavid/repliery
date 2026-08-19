@@ -21,4 +21,4 @@ Do not hard-wrap prose in source files, comments, JSX text, strings, or Markdown
 
 Always think about how any given layout and all of the used components look on all layouts, ranging from mobile to TV.
 
-Never disguise or restructure correct code merely to evade a linter; keep the canonical form and use the narrowest documented suppression for a verified false positive.
+Never disguise or restructure correct code merely to evade a linter (i.e. by aliasing). Keep the canonical form and use the narrowest documented suppression for a verified false positive.
