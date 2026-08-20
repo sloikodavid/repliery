@@ -1,15 +1,16 @@
 import type { MetadataRoute } from "next";
+import { routes } from "@/lib/routes";
 import { siteConfig } from "@/lib/site-config";
 
 export default function sitemap(): MetadataRoute.Sitemap {
 	return [
 		{
-			url: `${siteConfig.url}${siteConfig.routes.home}`,
+			url: new URL(routes.root, siteConfig.origin).href,
 			changeFrequency: "weekly",
 			priority: 1,
 		},
 		{
-			url: `${siteConfig.url}${siteConfig.routes.waitlist}`,
+			url: new URL(routes.waitlist, siteConfig.origin).href,
 			changeFrequency: "monthly",
 			priority: 0.8,
 		},

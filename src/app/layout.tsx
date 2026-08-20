@@ -2,7 +2,11 @@ import { ClerkProvider } from "@clerk/nextjs";
 import { shadcn } from "@clerk/ui/themes";
 import type { Metadata } from "next";
 import { ThemeProvider } from "next-themes";
+import { ConvexClientProvider } from "@/components/providers/convex-client-provider";
+import { ReactAriaRouterProvider } from "@/components/providers/react-aria-router-provider";
 import { SiteHeader } from "@/components/site-header";
+import { Toaster } from "@/components/ui/sonner";
+import { routes } from "@/lib/routes";
 import { siteConfig } from "@/lib/site-config";
 import "./globals.css";
 import { dmSans, figtree } from "./fonts";
@@ -31,17 +35,22 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
 							spacing: "1rem",
 						},
 					}}
-					waitlistUrl={siteConfig.routes.waitlist}
+					waitlistUrl={routes.waitlist}
 				>
-					<ThemeProvider
-						attribute="class"
-						defaultTheme="system"
-						disableTransitionOnChange
-						enableSystem
-					>
-						<SiteHeader />
-						{children}
-					</ThemeProvider>
+					<ConvexClientProvider>
+						<ReactAriaRouterProvider>
+							<ThemeProvider
+								attribute="class"
+								defaultTheme="system"
+								disableTransitionOnChange
+								enableSystem
+							>
+								<SiteHeader />
+								{children}
+								<Toaster />
+							</ThemeProvider>
+						</ReactAriaRouterProvider>
+					</ConvexClientProvider>
 				</ClerkProvider>
 			</body>
 		</html>

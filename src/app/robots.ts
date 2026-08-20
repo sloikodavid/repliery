@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { routes } from "@/lib/routes";
 import { siteConfig } from "@/lib/site-config";
 
 export default function robots(): MetadataRoute.Robots {
@@ -6,8 +7,8 @@ export default function robots(): MetadataRoute.Robots {
 		rules: {
 			userAgent: "*",
 			allow: "/",
-			disallow: ["/dashboard", siteConfig.routes.signIn],
+			disallow: [routes.organizations.index, routes.signIn],
 		},
-		sitemap: `${siteConfig.url}/sitemap.xml`,
+		sitemap: new URL("/sitemap.xml", siteConfig.origin).href,
 	};
 }

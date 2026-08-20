@@ -1,12 +1,10 @@
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL;
+const configuredSiteUrl = process.env.NEXT_PUBLIC_SITE_URL;
+
+if (!configuredSiteUrl) {
+	throw new Error("NEXT_PUBLIC_SITE_URL is not set.");
+}
 
 export const siteConfig = {
 	name: "Repliery",
-	url: siteUrl,
-	routes: {
-		home: "/",
-		dashboard: "/dashboard",
-		signIn: "/sign-in",
-		waitlist: "/waitlist",
-	},
+	origin: new URL(configuredSiteUrl).origin,
 } as const;

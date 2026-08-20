@@ -3,7 +3,7 @@
 import type { ReactNode } from "react";
 import { useEffect } from "react";
 import { FallbackPageContent } from "@/components/fallback-page-content";
-import { buttonVariants } from "@/components/ui/button-variants";
+import { Button } from "@/components/ui/button";
 
 export type ErrorFallbackProps = {
 	error: Error & { digest?: string };
@@ -34,9 +34,7 @@ export function ErrorFallback({
 			description={description}
 			actions={
 				<>
-					<button type="button" onClick={retry} className={buttonVariants()}>
-						Try again
-					</button>
+					<Button onPress={retry}>Try again</Button>
 					{additionalActions}
 				</>
 			}

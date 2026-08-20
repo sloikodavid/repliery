@@ -1,6 +1,10 @@
 import { clerkMiddleware } from "@clerk/nextjs/server";
 
-export default clerkMiddleware();
+export default clerkMiddleware({
+	organizationSyncOptions: {
+		organizationPatterns: ["/organizations/:slug", "/organizations/:slug/(.*)"],
+	},
+});
 
 export const config = {
 	matcher: [

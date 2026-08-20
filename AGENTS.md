@@ -24,3 +24,5 @@ Always think about how any given layout and all of the used components look on a
 Never disguise or restructure correct code merely to evade a linter (i.e. by aliasing). Keep the canonical form and use the narrowest documented suppression for a verified false positive.
 
 Never hand-roll anything locally in a given file or component, right where it's used. Use the shadcn cli for adding new components.
+
+Proactively propose to use the Convex, Clerk, Vercel, and GitHub CLIs - but ensure you have an explicit OK from the user in the conversation for every impactful action you take. If authentication is required, mention it right away, instead of taking another route. Tread carefully around production, checking all the live consequences of your actions before you take them.
