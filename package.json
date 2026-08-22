@@ -9,6 +9,7 @@
 		"dev": "pnpm run --parallel \"/^dev:.+$/\"",
 		"dev:next": "next dev",
 		"dev:convex": "convex dev",
+		"dev:vitest": "vitest --project=unit --project=convex-mock",
 		"build": "next build",
 		"start": "next start",
 		"check": "pnpm run --parallel \"/^check:[^:]+$/\"",
@@ -21,7 +22,6 @@
 		"test:integration:convex:mock": "vitest run --project=convex-mock",
 		"test:integration:convex:local": "node test/support/integration/convex/local/run-with-local-backend.mjs integration",
 		"test:e2e": "node test/support/integration/convex/local/run-with-local-backend.mjs e2e",
-		"watch:test": "vitest --project=unit --project=convex-mock",
 		"fix": "biome check --write .",
 		"verify": "pnpm run --sequential \"/^(check|test)$/\" && pnpm run build"
 	},
