@@ -1,12 +1,15 @@
 import type { PaginationOptions } from "convex/server";
 import { ConvexError } from "convex/values";
+import {
+	type BusinessSort,
+	businessSorts,
+} from "../../shared/business-contract";
+import { clerkPermissions } from "../../shared/clerk-contract";
 import { internal } from "../_generated/api";
 import type { Id } from "../_generated/dataModel";
 import type { MutationCtx, QueryCtx } from "../_generated/server";
-import { type BusinessSort, businessSorts } from "../businessContract";
 import {
 	type ClerkPermission,
-	clerkPermissions,
 	getActiveOrganizationIdentityOrNull,
 	hasClerkPermission,
 	requireOrganizationIdentity,
@@ -226,12 +229,10 @@ export async function createBusiness(ctx: MutationCtx, nameInput: string) {
 	if (name.length < 1 || name.length > 80) {
 		throw new ConvexError({ code: "INVALID_BUSINESS_NAME" });
 	}
-	const now = Date.now();
 	return await ctx.db.insert("businesses", {
 		name,
 		clerkOrganizationId: organizationIdentity.clerkOrganizationId,
 		status: "active",
-		updatedAt: now,
 	});
 }
 
@@ -245,11 +246,8 @@ export async function requestBusinessDeletion(
 		clerkPermissions.manageBusinesses,
 	);
 	if (business.status === "active") {
-		const now = Date.now();
 		await ctx.db.patch("businesses", business._id, {
 			status: "deleting",
-			deletionRequestedAt: now,
-			updatedAt: now,
 		});
 		await ctx.scheduler.runAfter(0, internal.businesses.purge, {
 			businessId: business._id,

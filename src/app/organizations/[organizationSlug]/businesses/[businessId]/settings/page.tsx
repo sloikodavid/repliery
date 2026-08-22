@@ -1,7 +1,7 @@
 import { auth } from "@clerk/nextjs/server";
 import { notFound } from "next/navigation";
 import { BusinessSettingsPage } from "@/features/businesses/business-settings-page";
-import { clerkPermissions } from "../../../../../../../convex/clerkContract";
+import { clerkPermissions } from "../../../../../../../shared/clerk-contract";
 
 export default async function Page({
 	params,

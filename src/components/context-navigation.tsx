@@ -42,6 +42,7 @@ export function ContextNavigation({
 						className={cn(
 							buttonVariants({
 								variant: itemVariants[item.state],
+								iconSpacing: "balanced",
 								size: "sm",
 							}),
 							"min-w-0 max-w-44 sm:max-w-64",

@@ -15,5 +15,6 @@ export function ConversationPage({
 		businessId: businessId as Id<"businesses">,
 		conversationId: conversationId as Id<"conversations">,
 	});
+	// Conversation details are intentionally reserved for the next feature slice.
 	return null;
 }

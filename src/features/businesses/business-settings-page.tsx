@@ -28,10 +28,10 @@ import { routes } from "@/lib/routes";
 import { api } from "../../../convex/_generated/api";
 import type { Id } from "../../../convex/_generated/dataModel";
 
-const removeBusinessDescription =
-	"This also removes its memberships and conversations. This cannot be undone.";
-const removeBusinessConfirmation =
-	"The business, its memberships, and its conversations will be removed immediately. This cannot be undone.";
+const deleteBusinessDescription =
+	"This starts permanent deletion of its memberships and conversations. Access ends immediately, and this cannot be undone.";
+const deleteBusinessConfirmation =
+	"The business will be hidden immediately and permanently deleted in the background. This cannot be undone.";
 
 export function BusinessSettingsPage({
 	organizationSlug,
@@ -41,15 +41,17 @@ export function BusinessSettingsPage({
 	businessId: string;
 }) {
 	const router = useRouter();
-	const removeBusiness = useMutation(api.businesses.remove);
+	const requestBusinessDeletion = useMutation(api.businesses.requestDeletion);
 
-	async function handleRemove() {
+	async function handleDelete() {
 		try {
-			await removeBusiness({ businessId: businessId as Id<"businesses"> });
-			toast.success("Business removed");
+			await requestBusinessDeletion({
+				businessId: businessId as Id<"businesses">,
+			});
+			toast.success("Business deletion started");
 			router.replace(routes.businesses.index(organizationSlug));
 		} catch {
-			toast.error("The business could not be removed. Refresh and try again.");
+			toast.error("The business could not be deleted. Refresh and try again.");
 		}
 	}
 
@@ -58,32 +60,32 @@ export function BusinessSettingsPage({
 			<PageHeader title="Settings" />
 			<Item variant="outline">
 				<ItemContent>
-					<ItemTitle>Remove business</ItemTitle>
-					<ItemDescription>{removeBusinessDescription}</ItemDescription>
+					<ItemTitle>Delete business</ItemTitle>
+					<ItemDescription>{deleteBusinessDescription}</ItemDescription>
 				</ItemContent>
 				<ItemActions>
 					<AlertDialogTrigger>
-						<Button variant="destructive" aria-label="Remove business">
+						<Button variant="destructive" aria-label="Delete business">
 							<IconTrash data-icon="inline-start" />
-							Remove
+							Delete
 						</Button>
 						<AlertDialogContent>
 							<AlertDialogHeader>
 								<AlertDialogMedia>
 									<IconTrash />
 								</AlertDialogMedia>
-								<AlertDialogTitle>Remove this business?</AlertDialogTitle>
+								<AlertDialogTitle>Delete this business?</AlertDialogTitle>
 								<AlertDialogDescription>
-									{removeBusinessConfirmation}
+									{deleteBusinessConfirmation}
 								</AlertDialogDescription>
 							</AlertDialogHeader>
 							<AlertDialogFooter>
 								<AlertDialogCancel>Cancel</AlertDialogCancel>
 								<AlertDialogAction
 									variant="destructive"
-									onPress={() => void handleRemove()}
+									onPress={() => void handleDelete()}
 								>
-									Remove business
+									Delete business
 								</AlertDialogAction>
 							</AlertDialogFooter>
 						</AlertDialogContent>

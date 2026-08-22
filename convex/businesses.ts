@@ -51,7 +51,7 @@ export const create = mutation({
 	handler: (ctx, args) => createBusiness(ctx, args.name),
 });
 
-export const remove = mutation({
+export const requestDeletion = mutation({
 	args: { businessId: v.id("businesses") },
 	returns: v.null(),
 	handler: async (ctx, args) => {

@@ -53,7 +53,7 @@ import { Tooltip, TooltipTrigger } from "@/components/ui/tooltip";
 import { formatDate } from "@/lib/format";
 import { api } from "../../../convex/_generated/api";
 import type { Id } from "../../../convex/_generated/dataModel";
-import { clerkPermissions } from "../../../convex/clerkContract";
+import { clerkPermissions } from "../../../shared/clerk-contract";
 
 const emptyMembersDescription =
 	"Members with organization-wide business access still have access. Add members who need access through this business specifically.";

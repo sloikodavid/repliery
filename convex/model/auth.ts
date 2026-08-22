@@ -1,9 +1,7 @@
 import type { UserIdentity } from "convex/server";
 import { ConvexError } from "convex/values";
+import type { clerkPermissions } from "../../shared/clerk-contract";
 import type { MutationCtx, QueryCtx } from "../_generated/server";
-import { clerkPermissions } from "../clerkContract";
-
-export { clerkPermissions };
 
 export type ClerkPermission =
 	(typeof clerkPermissions)[keyof typeof clerkPermissions];

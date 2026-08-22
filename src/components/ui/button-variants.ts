@@ -30,9 +30,15 @@ export const buttonVariants = cva(
 				"icon-sm": "size-7 rounded-none",
 				"icon-lg": "size-9",
 			},
+			iconSpacing: {
+				edge: "",
+				balanced:
+					"has-data-[icon=inline-end]:px-1.5 has-data-[icon=inline-start]:px-1.5",
+			},
 		},
 		defaultVariants: {
 			variant: "default",
+			iconSpacing: "edge",
 			size: "default",
 		},
 	},

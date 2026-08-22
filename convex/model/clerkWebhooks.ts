@@ -173,7 +173,6 @@ export async function purgeOrganization(
 	ctx: MutationCtx,
 	clerkOrganizationId: string,
 ) {
-	const now = Date.now();
 	const businesses = await ctx.db
 		.query("businesses")
 		.withIndex("by_clerkOrganizationId_and_status", (query) =>
@@ -185,8 +184,6 @@ export async function purgeOrganization(
 	for (const business of businesses) {
 		await ctx.db.patch("businesses", business._id, {
 			status: "deleting",
-			deletionRequestedAt: now,
-			updatedAt: now,
 		});
 		await ctx.scheduler.runAfter(0, internal.businesses.purge, {
 			businessId: business._id,

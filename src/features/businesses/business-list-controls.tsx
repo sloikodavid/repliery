@@ -16,7 +16,7 @@ import {
 import {
 	type BusinessSort,
 	businessSorts,
-} from "../../../convex/businessContract";
+} from "../../../shared/business-contract";
 
 const businessSortItems = [
 	{ id: businessSorts.newest, label: "Newest first" },

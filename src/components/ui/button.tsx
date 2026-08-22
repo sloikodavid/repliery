@@ -14,6 +14,7 @@ import { cn } from "@/lib/utils";
 function Button({
 	className,
 	variant = "default",
+	iconSpacing = "edge",
 	size = "default",
 	...props
 }: Omit<ButtonPrimitiveProps, "className"> &
@@ -24,7 +25,7 @@ function Button({
 			data-slot="button"
 			data-variant={variant}
 			data-size={size}
-			className={cn(buttonVariants({ variant, size, className }))}
+			className={cn(buttonVariants({ variant, iconSpacing, size, className }))}
 			{...props}
 		/>
 	);
@@ -33,6 +34,7 @@ function Button({
 function LinkButton({
 	className,
 	variant = "default",
+	iconSpacing = "edge",
 	size = "default",
 	...props
 }: Omit<LinkPrimitiveProps, "className"> &
@@ -42,7 +44,7 @@ function LinkButton({
 			data-slot="button"
 			data-variant={variant}
 			data-size={size}
-			className={cn(buttonVariants({ variant, size, className }))}
+			className={cn(buttonVariants({ variant, iconSpacing, size, className }))}
 			{...props}
 		/>
 	);

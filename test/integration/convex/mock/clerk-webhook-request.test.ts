@@ -1,11 +1,9 @@
-/// <reference types="vite/client" />
-
 import { createHmac } from "node:crypto";
 import { convexTest } from "convex-test";
 import { afterEach, describe, expect, test } from "vitest";
-import schema from "./schema";
+import schema from "../../../../convex/schema";
+import { modules } from "../../../support/integration/convex/mock/modules";
 
-const modules = import.meta.glob("./**/*.ts");
 const originalSigningSecret = process.env.CLERK_WEBHOOK_SIGNING_SECRET;
 
 afterEach(() => {

@@ -9,6 +9,7 @@ import { toast } from "sonner";
 import { PageContainer } from "@/components/page-container";
 import { PageEmptyState } from "@/components/page-empty-state";
 import { PageHeader } from "@/components/page-header";
+import { PageLoadingState } from "@/components/page-loading-state";
 import { PageSidebarLayout } from "@/components/page-sidebar-layout";
 import { Button } from "@/components/ui/button";
 import {
@@ -40,8 +41,8 @@ import { api } from "../../../convex/_generated/api";
 import {
 	type BusinessSort,
 	businessSorts,
-} from "../../../convex/businessContract";
-import { clerkPermissions } from "../../../convex/clerkContract";
+} from "../../../shared/business-contract";
+import { clerkPermissions } from "../../../shared/clerk-contract";
 
 export function BusinessesPage({
 	organizationSlug,
@@ -74,7 +75,14 @@ export function BusinessesPage({
 		}
 	}, [navigation, organizationSlug, router]);
 
-	if (!navigation || navigation.kind === "business") {
+	if (navigation === undefined) {
+		return (
+			<PageContainer>
+				<PageLoadingState label="Loading businesses" />
+			</PageContainer>
+		);
+	}
+	if (navigation === null || navigation.kind === "business") {
 		return null;
 	}
 	const isSearching = search.trim().length > 0;

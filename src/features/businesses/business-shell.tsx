@@ -11,13 +11,14 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import type { PropsWithChildren } from "react";
 import { PageContainer } from "@/components/page-container";
+import { PageLoadingState } from "@/components/page-loading-state";
 import { PageSidebarLayout } from "@/components/page-sidebar-layout";
 import { buttonVariants } from "@/components/ui/button-variants";
 import { routes } from "@/lib/routes";
 import { cn } from "@/lib/utils";
 import { api } from "../../../convex/_generated/api";
 import type { Id } from "../../../convex/_generated/dataModel";
-import { clerkPermissions } from "../../../convex/clerkContract";
+import { clerkPermissions } from "../../../shared/clerk-contract";
 
 export function BusinessShell({
 	children,
@@ -36,8 +37,12 @@ export function BusinessShell({
 		permission: clerkPermissions.manageBusinesses,
 	});
 
-	if (!business) {
-		return null;
+	if (business === undefined) {
+		return (
+			<PageContainer>
+				<PageLoadingState label="Loading business" />
+			</PageContainer>
+		);
 	}
 
 	const conversationsHref = routes.conversations.index(

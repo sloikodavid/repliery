@@ -1,5 +1,5 @@
 import { v } from "convex/values";
-import { businessSorts } from "./businessContract";
+import { businessSorts } from "../shared/business-contract";
 
 export const businessSortValidator = v.union(
 	v.literal(businessSorts.newest),
@@ -15,8 +15,6 @@ export const businessFieldsValidator = v.object({
 	name: v.string(),
 	clerkOrganizationId: v.string(),
 	status: businessStatusValidator,
-	updatedAt: v.number(),
-	deletionRequestedAt: v.optional(v.number()),
 });
 
 export const businessDocumentValidator = businessFieldsValidator.extend({
